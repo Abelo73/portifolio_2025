@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="bg-gray-900 text-white fixed w-full z-50 shadow-md"
+      className=" text-white bg-white/10 backdrop-blur-md shadow-lg fixed w-full z-50 "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
