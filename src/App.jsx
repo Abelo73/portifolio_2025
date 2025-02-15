@@ -11,6 +11,9 @@ import About from "./components/About";
 import Testimonial from "./components/Testimonial";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Experience from "./components/Experience ";
+import Timeline from "./components/Timeline";
+import Timeline2 from "./components/Timeline2";
 
 const fadeInVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -61,8 +64,39 @@ const App = () => {
         <Skills />
       </motion.div>
 
+      {/* <motion.div
+        className="h-screen flex items-center justify-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        variants={fadeInVariants}
+      >
+        <Experience />
+      </motion.div> */}
+      {/* <motion.div
+        className="h-screen flex items-center justify-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        variants={fadeInVariants}
+      >
+        <Timeline />
+      </motion.div> */}
+
       <motion.div
-        className="h-screen flex items-center justify-center bg-gray-100"
+        className="h-screen flex items-center justify-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        variants={fadeInVariants}
+      >
+        <Timeline2 />
+      </motion.div>
+
+
+
+      <motion.div
+        className="h-screen flex items-center justify-center "
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}

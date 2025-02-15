@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const aboutText = [
   "➜  ~ whoami",
@@ -8,7 +8,7 @@ const aboutText = [
   "I specialize in Java, Spring Boot, React, and Node.js.",
   "I love building scalable and high-performance applications.",
   "I'm always exploring new technologies and problem-solving!",
-  "Let's build something amazing together! 💡"
+  "Let's build something amazing together! 💡",
 ];
 
 const About = () => {
@@ -18,23 +18,24 @@ const About = () => {
   const [charIndex, setCharIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
 
+  const cursorRef = useRef(null);
+
   useEffect(() => {
     if (lineIndex < aboutText.length) {
       if (charIndex < aboutText[lineIndex].length) {
         const timeout = setTimeout(() => {
           setCurrentLine((prev) => prev + aboutText[lineIndex][charIndex]);
           setCharIndex(charIndex + 1);
-        }, 20); // 🚀 Increased speed
+        }, 30); // Adjust speed if needed
 
         return () => clearTimeout(timeout);
       } else {
-        // Move to the next line faster
         const timeout = setTimeout(() => {
           setDisplayedLines((prevLines) => [...prevLines, currentLine]);
           setCurrentLine("");
           setCharIndex(0);
           setLineIndex(lineIndex + 1);
-        }, 250);
+        }, 200);
 
         return () => clearTimeout(timeout);
       }
@@ -45,13 +46,15 @@ const About = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setShowCursor((prev) => !prev);
-    }, 400);
+    }, 500);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen bg-black text-green-400 px-6 md:px-16 font-mono">
-      
+    <section
+      id="about"
+      className="scroll-mt-20 flex flex-col items-center justify-center min-h-screen bg-black text-green-400 px-6 md:px-16 font-mono"
+    >
       {/* Terminal Header */}
       <div className="w-full max-w-3xl bg-gray-900 text-white p-4 rounded-t-lg flex justify-between items-center">
         <div className="flex space-x-2">
@@ -78,10 +81,9 @@ const About = () => {
         ))}
         <p className="text-white">
           {currentLine}
-          {showCursor && <span className="bg-green-400">&nbsp;</span>}
+          {showCursor && <span ref={cursorRef} className="bg-green-400">&nbsp;</span>}
         </p>
       </div>
-      
     </section>
   );
 };

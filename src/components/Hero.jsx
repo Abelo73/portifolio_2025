@@ -86,10 +86,6 @@ const Hero = () => {
 
       {/* Hero Content */}
       <div className="relative text-center px-6">
-        {/* <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-          Hi, I'm a Full-Stack Developer
-        </h1> */}
-
         <motion.h1
           className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text"
           initial={{ opacity: 0, y: 20 }}
@@ -105,6 +101,7 @@ const Hero = () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg shadow-lg text-lg font-semibold transition-transform duration-300"
+          aria-label="Explore My Work"
         >
           Explore My Work
         </motion.button>
