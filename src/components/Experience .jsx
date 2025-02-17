@@ -27,7 +27,7 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section className="py-20 bg-gray-900 text-white">
+    <section id="experience" className="py-20 bg-gray-900 text-white">
       <div className="max-w-5xl mx-auto px-6">
         <motion.h2
           className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text"

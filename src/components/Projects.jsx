@@ -69,7 +69,7 @@ const Projects = () => {
   const [activeTab, setActiveTab] = useState("Web");
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black text-white px-6">
+    <section id="projects" className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 to-black text-white px-6">
       {/* Section Title */}
       <h2 className="text-5xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
         🚀 My Projects
@@ -90,51 +90,57 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* Project Cards */}
+      {/* Project Cards with Carousel */}
       <motion.div
         key={activeTab}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="relative w-full sm:max-w-full overflow-x-auto"
       >
-        {projectsData
-          .find((category) => category.category === activeTab)
-          ?.projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-              className="relative group bg-opacity-10 bg-white rounded-2xl p-6 shadow-2xl backdrop-blur-lg transition-all hover:shadow-green-400"
-            >
-              <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-lg" />
-              <div className="mt-4">
-                <h3 className="text-2xl font-bold">{project.title}</h3>
-                <p className="text-gray-400">{project.description}</p>
-                <div className="flex gap-2 mt-3">
-                  {project.stack.map((tech, i) => (
-                    <span key={i} className="bg-gray-800 text-xs px-3 py-1 rounded-full">
-                      {tech}
-                    </span>
-                  ))}
+        <motion.div
+          drag="x"
+          dragConstraints={{ left: -300, right: 0 }}
+          className="flex space-x-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 flex-nowrap"
+        >
+          {projectsData
+            .find((category) => category.category === activeTab)
+            ?.projects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="relative group bg-opacity-10 bg-white rounded-2xl p-6 shadow-2xl backdrop-blur-lg transition-all hover:shadow-green-400 w-[320px] sm:w-auto"
+              >
+                <img src={project.image} alt={project.title} className="w-full h-48 object-cover rounded-lg" />
+                <div className="mt-4">
+                  <h3 className="text-2xl font-bold">{project.title}</h3>
+                  <p className="text-gray-400">{project.description}</p>
+                  <div className="flex gap-2 mt-3">
+                    {project.stack.map((tech, i) => (
+                      <span key={i} className="bg-gray-800 text-xs px-3 py-1 rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Overlay Actions */}
-              <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="flex space-x-4">
-                  <a href={project.github} target="_blank" className="text-white text-xl hover:text-gray-300">
-                    <FaGithub />
-                  </a>
-                  <a href={project.demo} target="_blank" className="text-green-400 text-xl hover:text-green-300">
-                    <FaExternalLinkAlt />
-                  </a>
+                {/* Overlay Actions */}
+                <div className="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex space-x-4">
+                    <a href={project.github} target="_blank" className="text-white text-xl hover:text-gray-300">
+                      <FaGithub />
+                    </a>
+                    <a href={project.demo} target="_blank" className="text-green-400 text-xl hover:text-green-300">
+                      <FaExternalLinkAlt />
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+        </motion.div>
       </motion.div>
     </section>
   );

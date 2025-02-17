@@ -30,7 +30,7 @@ const techIcons = [
 
 const Hero = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center h-screen bg-black text-white overflow-hidden">
+    <section id="home" className="relative flex flex-col items-center justify-center h-screen bg-black text-white overflow-hidden">
       {/* Blurred Code Terminal Background */}
       <div className="absolute inset-0 flex justify-center items-center opacity-20 blur-xl">
         <div className="w-[90%] max-w-4xl bg-gray-900/80 p-6 rounded-lg border border-gray-700 shadow-lg">

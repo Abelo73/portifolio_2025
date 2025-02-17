@@ -34,7 +34,7 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center justify-center py-12 bg-gray-900 text-white">
+    <section id="testimonials" className="flex flex-col items-center justify-center py-12 bg-gray-900 text-white">
       <h2 className="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
         What People Say
       </h2>
